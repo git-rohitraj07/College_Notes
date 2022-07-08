@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+
+public class Person:IComparable
+{
+  public string Fname
+   {
+      get; set;
+   }
+  public string Lname
+   {
+      get; set;
+   }
+   public int CompareTo(object obj)  
+    {  
+        if (!(obj is Person))  
+        {  
+            throw new ArgumentException("Compared Object is not of Person");  
+        }  
+        Person p = obj as Person;  
+        return Fname.CompareTo(p.Fname);  
+}
+}
+
+public class Test
+{
+  public static void Main()
+  { 
+     Person[] p=new Person[]
+      { 
+         new Person()
+         { Fname="P1", Lname="E1" },
+		 
+         new Person()
+         { Fname="P2", Lname="E2" }
+      };
+       Array.Sort(p);
+       Array.ForEach(p, x => Console.WriteLine(x.Id +" " + x.Fname)); 
+   }
+}         
